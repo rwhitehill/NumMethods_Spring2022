@@ -1,0 +1,2 @@
+\newcommand{\bef}{\begin{figure}[h!]\centering}
+\newcommand{\eef}{\end{figure}}

@@ -1,0 +1,6 @@
+\newcommand{\eref}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\erefs}[2]{Eqs.~(\ref{eq:#1})--(\ref{eq:#2})}
+\newcommand{\fref}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\frefs}[2]{Figs.~\ref{fig:#1}--\ref{fig:#2}}
+\newcommand{\tref}[1]{Table~\ref{tab:#1}}
+\newcommand{\trefs}[2]{Table~(\ref{tab:#1})--(\ref{tab:#2})}

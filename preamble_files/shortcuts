@@ -1,0 +1,6 @@
+\newcommand{\id}{\mathds{1}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\lcm}{\rm lcm}
