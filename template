@@ -4,6 +4,7 @@
 \input{../preamble_files/figures}
 \input{../preamble_files/references}
 \input{../preamble_files/shortcuts}
+\input{../preamble_files/listings}
 
 \pagestyle{fancy}
 \lhead{Richard Whitehill}
