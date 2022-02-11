@@ -54,7 +54,7 @@ Since
 ||x||_{\infty} &= \max\{|2|,|1|,|-3|,|4|\} = 4
 \end{align*}
 
-(b) $x = (\sin{k},\cos{k},2^{k})^{T}$
+(b) $x = (\sin{k},\cos{k},2^{k})^{T}$, where $k$ is a positive integer.
 \begin{align*}
 ||x||_1 &= |\sin{k}| + |\cos{k}| + 2^{k} \\
 ||x||_2 &= \sqrt{\sin^{2}{k} + \cos^{2}{k} + (2^{k})^2} = \sqrt{1 + 4^{k}} \\
@@ -86,7 +86,7 @@ Since
 \begin{align*}
 ||A||_1 &= \max\{|2|+|-1|+|0|,|-1|+|2|+|-1|,|0|+|-1|+|2|\} = 4 \\
 ||A||_{\infty} &= 4 \text{ (since the matrix is symmetric about the diagonal)} \\
-||A||_{2} &= \sqrt{\max\{4,6 \pm 4\sqrt{2}\}} = \sqrt{6 + 4\sqrt{2}} \approx{11.657}
+||A||_{2} &= \sqrt{\max\{4,6 \pm 4\sqrt{2}\}} = \sqrt{6 + 4\sqrt{2}} \approx{3.414}
 \end{align*}
 
 Note: I used the \textit{sympy} package in python to solve for the eigenvalues of $A^{T}A$.
