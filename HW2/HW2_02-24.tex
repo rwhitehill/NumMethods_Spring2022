@@ -1,0 +1,180 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../preamble_files/packages}
+\input{../preamble_files/figures}
+\input{../preamble_files/references}
+\input{../preamble_files/shortcuts}
+\input{../preamble_files/listings}
+
+\pagestyle{fancy}
+\lhead{Richard Whitehill}
+\chead{MATH 551 -- HW 2}
+\rhead{02/24/22}
+\cfoot{\thepage~of~\pageref{LastPage}}
+
+\newcommand{\prob}[2]{\textbf{#1)} #2}
+
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\prob{1}{}
+
+(a) Write the equation for the tangent line to $y = f(x)$ at $x = p$.
+
+$\rightarrow$ The equation of a line passing through $p,f(p)$ with slope $m$ is given as
+\begin{align*}
+y-f(p) = m(x-p)
+\end{align*}
+Since the line is tangent to the curve at $x = p$, the slope $m = f'(p)$. Hence,
+\begin{align*}
+y - f(p) = f'(p)(x-p) \Rightarrow y = f'(p)x + [f(p) - pf'(p)]
+\end{align*}
+
+(b) Solve for the $x$-intercept of the line in equation (a).
+
+The $x$-intercept is defined as the value of $x$ such that $y = 0$. We see that
+\begin{align*}
+0 = f'(p)x + [f(p) - pf'(p)] \Rightarrow x = \frac{pf'(p)-f(p)}{f'(p)} = p - \frac{f(p)}{f'(p)}
+\end{align*}
+assuming that $f'(p) \not= 0$.
+
+(c) Write the equation for the line that intersects the curve $y = f(x)$ at $x = p$ and $x = q$.
+
+The slope of the line passing through $(p,f(p))$ and $(q,f(q))$ is 
+\begin{align*}
+m = \frac{f(p)-f(q)}{p-q}
+\end{align*}
+so we see
+\begin{align*}
+y - f(p) = \frac{f(p)-f(q)}{p-q}(x-p) \Rightarrow y = \frac{f(p)-f(q)}{p-q}(x-p) + f(p)
+\end{align*}
+
+(d) Solve for the $x$-intercept of the line in equation (c).
+
+We can solve for the $x$-intercept for the equation in part (c) as we did for that in part (b):
+\begin{align*}
+0 &= \frac{f(p)-f(q)}{p-q}(x-p) + f(p) \\
+&\frac{f(p)-f(q)}{p-q}(x-p) = -f(p) \\
+x-p &= -f(p)\frac{p-q}{f(p)-f(q)} \\
+x &= p - \frac{f(p)(p-q)}{f(p)-f(q)}
+\end{align*}
+
+\prob{2}{Starting with (0,1), perform two iterations of Newton iteration on the following systems of nonlinear equations
+\begin{align*}
+\begin{cases}
+4x_1^2 - x_2^2 = 0 \\
+4x_1x_2^2 - x_1 = 1
+\end{cases}
+\end{align*}
+}
+
+It has been shown that for the system
+\begin{align*}
+\begin{cases}
+f_1(x_1,x_2) = 0 \\
+f_2(x_1,x_2) = 0
+\end{cases}
+\end{align*}
+we can find successive approximations to the root as follows:
+\begin{align*}
+\vec{x}_{n+1} = \vec{x}_{n} - J^{-1}f(\vec{x}_{n})
+\end{align*}
+where 
+\begin{align*}
+\vec{x}_n = \begin{pmatrix}
+x_{1}^{(n)} \\ x_{2}^{(n)}
+\end{pmatrix} 
+&\quad
+f(\vec{x}_{n}) = \begin{pmatrix}
+f_1(x_1^{(n)},x_2^{(n)}) \\ f_2(x_1^{(n)},x_2^{(n)})
+\end{pmatrix}
+\\
+J(x_1,x_2) &= \begin{pmatrix}
+\partial f_1/\partial x_1 & \partial f_1/\partial x_2 \\
+\partial f_2/\partial x_1 & \partial f_2/\partial x_2
+\end{pmatrix}
+\end{align*}
+For our problem $f_1 = 4x_1^2 - x_2^2$ and $f_2 = 4x_1x_2^2 - x_1 - 1$, so Newton iteration gives
+\begin{align*}
+\begin{pmatrix}
+x_{1}^{(n+1)} \\ x_{2}^{(n+1)}
+\end{pmatrix} 
+=
+\begin{pmatrix}
+x_{1}^{(n)} \\ x_{2}^{(n)}
+\end{pmatrix} 
+-
+\begin{pmatrix}
+8x_1^{(n)} & -2x_2^{(n)} \\
+4(x_2^{(n)})^2 - 1 & 8x_1^{(n)}x_2^{(n)}
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+4(x_1^{(n)})^2 - (x_2^{(n)})^2 \\ 4x_1^{(n)}(x_2^{(n)})^2 - x_1^{(n)} - 1
+\end{pmatrix}
+\end{align*}
+If we begin with $x_1^{(0)} = 0$ and $x_2^{(0)} = 1$, then
+\begin{align*}
+\begin{pmatrix}
+x_{1}^{(1)} \\ x_{2}^{(1)}
+\end{pmatrix} 
+=
+\begin{pmatrix}
+0 \\ 1
+\end{pmatrix} 
+-
+\begin{pmatrix}
+0 & -2 \\
+3 & 0
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+-1 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\ 1
+\end{pmatrix} 
+-
+\begin{pmatrix}
+-1/3 \\ 1/2
+\end{pmatrix} 
+=
+\begin{pmatrix}
+1/3 \\ 1/2
+\end{pmatrix}
+\end{align*}
+Repeating for a second time we see
+\begin{align*}
+\begin{pmatrix}
+x_{1}^{(2)} \\ x_{2}^{(2)}
+\end{pmatrix} 
+=
+\begin{pmatrix}
+1/3 \\ 1/2
+\end{pmatrix} 
+-
+\begin{pmatrix}
+8/3 & -1 \\
+0 & 4/3
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+7/36 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1/3 \\ 1/2
+\end{pmatrix} 
+-
+\begin{pmatrix}
+-5/24 \\ -3/4
+\end{pmatrix} 
+=
+\begin{pmatrix}
+13/24 \\ 5/4
+\end{pmatrix}
+\end{align*}
+
+\prob{3}{Write a program to compute the square root of $m$ by bisection method when $m = 7,~13,~17$. The interval $[a,b]$ where the square root is located is $[s,s+1]$, where $s$ is an integer and $s^2 < m < (s+1)^2$. Please find the approximate solution with 7 iteration steps, i.e. find $c_0,c_1,\hdots,c_7$.}
+
+\end{document}
