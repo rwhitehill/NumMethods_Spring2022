@@ -23,4 +23,4 @@ def secant(f,x0,x1,M=1e5,delta=1e-6,eps=1e-10):
 f = lambda x: x**2 - 3
 x0 = 0.0
 x1 = 1.0
-print(secant(f,x0,x1))
+print('x0 = {}, x1 = {}, root = {}'.format(x0,x1,secant(f,x0,x1)))
