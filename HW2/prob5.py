@@ -2,7 +2,7 @@
 
 import numpy as np
 
-def secant(f,x0,x1,M=1e5,delta=1e-6,eps=1e-10):
+def secant(f,x0,x1,M=1e5,delta=1e-10,eps=1e-10):
     u = f(x0)
     v = f(x1)
     for i in range(int(M)):
@@ -23,4 +23,4 @@ def secant(f,x0,x1,M=1e5,delta=1e-6,eps=1e-10):
 f = lambda x: x**2 - 3
 x0 = 0.0
 x1 = 1.0
-print('x0 = {}, x1 = {}, root = {}'.format(x0,x1,secant(f,x0,x1)))
+print('x0 = {}, x1 = {}, root = {:.6f}'.format(x0,x1,secant(f,x0,x1,delta=1e-6)))

@@ -3,7 +3,7 @@
 import numpy as np
 import sympy as sp
 
-def newton(f,fp,r,M=1e5,eps=1e-10):
+def newton(f,fp,r,M=1e5,delta=1e-10,eps=1e-10):
     u = f(r)
     up = fp(r)
     for i in range(int(M)):
@@ -12,7 +12,11 @@ def newton(f,fp,r,M=1e5,eps=1e-10):
         if up == 0.0:
             r = 'Error: horizontal tangent reached'
             break
-        r = r - u/up
+        r1 = r - u/up
+        if abs(r1-r) < delta:
+            r = r1
+            break
+        r = r1
         u = f(r)
         up = fp(r)
     return r

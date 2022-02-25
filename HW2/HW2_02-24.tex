@@ -34,7 +34,7 @@ y - f(p) = f'(p)(x-p) \Rightarrow y = f'(p)x + [f(p) - pf'(p)]
 
 (b) Solve for the $x$-intercept of the line in equation (a).
 
-The $x$-intercept is defined as the value of $x$ such that $y = 0$. We see that
+$\rightarrow$ The $x$-intercept is defined as the value of $x$ such that $y = 0$. We see that
 \begin{align*}
 0 = f'(p)x + [f(p) - pf'(p)] \Rightarrow x = \frac{pf'(p)-f(p)}{f'(p)} = p - \frac{f(p)}{f'(p)}
 \end{align*}
@@ -42,7 +42,7 @@ assuming that $f'(p) \not= 0$.
 
 (c) Write the equation for the line that intersects the curve $y = f(x)$ at $x = p$ and $x = q$.
 
-The slope of the line passing through $(p,f(p))$ and $(q,f(q))$ is 
+$\rightarrow$ The slope of the line passing through $(p,f(p))$ and $(q,f(q))$ is 
 \begin{align*}
 m = \frac{f(p)-f(q)}{p-q}
 \end{align*}
@@ -53,7 +53,7 @@ y - f(p) = \frac{f(p)-f(q)}{p-q}(x-p) \Rightarrow y = \frac{f(p)-f(q)}{p-q}(x-p)
 
 (d) Solve for the $x$-intercept of the line in equation (c).
 
-We can solve for the $x$-intercept for the equation in part (c) as we did for that in part (b):
+$\rightarrow$ We can solve for the $x$-intercept for the equation in part (c) as we did for that in part (b):
 \begin{align*}
 0 &= \frac{f(p)-f(q)}{p-q}(x-p) + f(p) \\
 &\frac{f(p)-f(q)}{p-q}(x-p) = -f(p) \\
@@ -176,5 +176,69 @@ x_{1}^{(2)} \\ x_{2}^{(2)}
 \end{align*}
 
 \prob{3}{Write a program to compute the square root of $m$ by bisection method when $m = 7,~13,~17$. The interval $[a,b]$ where the square root is located is $[s,s+1]$, where $s$ is an integer and $s^2 < m < (s+1)^2$. Please find the approximate solution with 7 iteration steps, i.e. find $c_0,c_1,\hdots,c_7$.}
+
+$\rightarrow$ The bisection method program is shown below and gives the following results after 7 iteration steps.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|c|c}
+$m$ & $s$ & $\sqrt{m}$ \\
+\hline
+7 & 2 & 2.644531 \\
+13 & 3 & 3.605469 \\
+17 & 4 & 4.121094 \\
+\end{tabular}
+\end{center}
+\end{table}
+
+An image of the program output is displayed below to demonstrate the successive approximations:
+\bef
+\includegraphics[scale=0.75]{fig1.png}
+\eef
+
+\inputpython{./prob3.py}
+
+\prob{4}{Find the root of $f(x) = x^2 - 3$ by Newton's method, with initial guess $x_0 = -100,-5,$ $-0.001,0,0.001,5,100$. Discuss your findings.}
+
+$\rightarrow$ The results of the program which computes the answers for each initial guess using Newton's method is shown below and the results are shown in the table below and in the figure of the program output below. It is seen that the results are similar in magnitude. Notice that when the initial guess and the root have the same sign, which is expected since the function is convex if restrict our domain to either $\reals^{-}$ or $\reals^{+}$ with a range $\reals^{+}$, which guarantees that the algorithm converges to the simple root on the domain. Trivially, it is also observed that an initial guess of $x_0 = 0$ gives an error since $f'(0) = 0$
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|c}
+$x_0$ & root \\
+\hline
+-100 & -1.73205 \\
+-5 & -1.73205 \\
+-0.001 & -1.73205 \\
+0 & Error \\
+0.001 & 1.73205 \\
+5 & 1.73205 \\
+100 & 1.73205 
+\end{tabular}
+\end{center}
+\end{table}
+\bef
+\includegraphics[scale=0.75]{fig2.png}
+\eef
+
+\inputpython{./prob4.py}
+
+\prob{5}{Write down the first three iterations of the secant method for solving $x^2-3 = 0$, starting with $x_0=0$ and $x_1 = 1$. Meanwhile, programming with MATLAB to obtain approximation accurate within $10^{-6}$.}
+
+The secant method follows an iterative algorithm defined by the recursion relation
+\begin{align*}
+x_{n+1} = x_n - f(x_n)\frac{x_n - x_{n-1}}{f(x_n) - f(x_{n+1})}
+\end{align*} 
+Thus, if $f(x) = x^2-3$, $x_0 = 0$, and $x_1 = 1$, then
+\begin{align*}
+x_2 &= 1 - (-2)\frac{1-0}{-2-(-3)} = 3 \\
+x_3 &= 3 - (6)\frac{3-1}{6-(-2)} = \frac{3}{2} \\
+x_4 &= \frac{3}{2} - \left(-\frac{3}{4}\right)\frac{3/2 - 3}{-3/4 - 6} = \frac{5}{3} = 1.\bar{6}
+\end{align*}
+Using a computer to obtain an approximation accurate to the sixth decimal place: 1.732051. Below are the figure showing the output of the program and the code used to implement the secant method.
+
+\bef
+\includegraphics[scale=1]{fig3.png}
+\eef
+
+\inputpython{./prob5.py}
 
 \end{document}
