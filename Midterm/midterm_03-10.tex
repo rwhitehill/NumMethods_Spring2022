@@ -1,0 +1,38 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../preamble_files/packages}
+\input{../preamble_files/figures}
+\input{../preamble_files/references}
+\input{../preamble_files/shortcuts}
+\input{../preamble_files/listings}
+
+\pagestyle{fancy}
+\lhead{Richard Whitehill}
+\chead{MATH 551 -- Midterm}
+\rhead{03/10/22}
+\cfoot{\thepage~of~\pageref{LastPage}}
+
+\newcommand{\prob}[2]{\textbf{#1)} #2}
+
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\prob{4}{}
+
+\bef
+\includegraphics[scale=0.9]{./prob4.png}
+\eef
+
+\inputpython{./prob4.py}
+
+\prob{5}{}
+
+\bef
+\includegraphics[scale=0.75]{./prob5_output.png}
+\eef
+
+\inputpython{./prob5.py}
+
+\end{document}
