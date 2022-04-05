@@ -15,13 +15,13 @@ f_num = sp.lambdify(x,f,'numpy')
 
 X = np.linspace(-1,1,100)
 fig, ax = plt.subplots(1,1,figsize=(7,5))
-ax.plot(X,f_num(X),'k-',label='original')
+ax.plot(X,f_num(X),'k--',label=r'$\exp(1-x^2)$')
 for i in range(1,6):
     fi = f.series(x,0,i+1)
     fi = fi.removeO()
     print('T_{}(x) = {}'.format(i,fi))  
     fi_num = sp.lambdify(x,fi,'numpy')
-    ax.plot(X,np.vectorize(fi_num)(X),label='order = %d'%i)
+    ax.plot(X,np.vectorize(fi_num)(X),label=r'$T_{%d}(x)$'%i)
 
 ax.set_xlabel(r'$x$',size=20)
 ax.set_ylabel(r'$y$',size=20)
