@@ -6,6 +6,8 @@
 \input{../preamble_files/shortcuts}
 \input{../preamble_files/listings}
 \usepackage{physics}
+\usepackage{booktabs}
+
 
 \pagestyle{fancy}
 \lhead{Richard Whitehill}
@@ -98,6 +100,131 @@ c) Based on your observation, is the interpolating polynomial always of degree $
 Explain why.
 
 Yes, the interpolating polynomial is always by construction of degree $n$ when we have $n+1$ data points.
+
+\prob{3}{For the data (-2,0), (0,4), and (1,9).}
+
+a) Determine the power series form of the interpolating polynomial, i.e. $p(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + \ldots + a_1x + a_0$.
+
+For this set, we have 3 data points which allows us to solve for 3 coefficients. Equivalently, we then have a 2nd degree polynomial of the form
+\[
+p\left( x \right) = a_0 + a_1 x + a_2 x^2
+.\]
+
+Using the restriction that $p\left( x_{i} \right) = y_{i}$, we have the following matrix equation:
+\begin{align*}
+    \begin{pmatrix}
+        1 & -2 & 4 \\
+        1 &  0 & 0 \\
+        1 &  1 &  1
+    \end{pmatrix} 
+    \begin{pmatrix}
+    a_0 \\ 
+    a_1 \\
+    a_2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    0 \\
+    4 \\
+    9
+    \end{pmatrix} 
+.\end{align*}
+
+Solving using standard linear algebra techniques gives
+\begin{align*}
+    \begin{pmatrix}
+    a_0 \\
+    a_1 \\
+    a_2
+    \end{pmatrix}
+    =
+   \begin{pmatrix}
+   4 \\
+   4 \\
+   1
+   \end{pmatrix}  
+.\end{align*}
+
+This gives the interpolating polynomial as
+\begin{align*}
+    p(x) = 4 + 4x + x^2
+.\end{align*}
+
+b) Determine the Lagrange form of the interpolating polynomial.
+
+The Lagrange form is 
+\begin{align*}
+    p(x) &= 4\left[ \frac{\left( x+2 \right)\left( x-1 \right)}{-2} \right] + 9\left[ \frac{\left( x+2 \right)x}{3} \right]
+    &= 3x\left( x+2 \right) -2\left( x+2 \right)\left( x-1 \right)
+.\end{align*}
+And simplifying for part (d) we find
+\begin{align*}
+   p\left( x \right) = x^2 + 4x + 4 
+.\end{align*}
+
+c) Construct a divided difference table.
+Then determine the Newton divided difference interpolating polynomial
+
+The equations dictate the construction of the divided difference table.
+\[
+\begin{cases}
+    F_{i,0} = f\left( x_{i} \right) \\
+    F_{i,j} = \frac{F_{i,j-1} - F_{i-1,j-1}}{x_{i} - x_{i-j}}
+\end{cases}
+.\]
+
+Thus, the table is:
+
+\begin{table}[H]
+   \begin{center}
+       \begin{tabular}{c||c|c|c}
+           -2 & 0 & - & - \\
+           0 & 4 & 2 & - \\
+           1 & 9 & 5 & 1
+       \end{tabular}
+   \end{center} 
+\end{table}
+
+The diagonal elements give the coefficients for Newton's interpolating polynomial, which is
+\begin{align*}
+    p\left( x \right) &= 2\left( x+2 \right) + x\left( x+2 \right) \\
+    &= x^2 + 4x + 4 
+.\end{align*}
+
+d) Do you answer for (a), (b), and (c) agree? Expain why.
+
+As can be seen, all the different forms of polynomial interpolation given the same answer.
+This must be the case since there is a theorem which gurantees that a polynomial which interpolates a given set of data is the unique interpolating polynomial for the data set.
+
+\prob{4}{Write and execute a program to compute
+    \begin{align*}
+     f\left( x \right) = \sqrt{x^2 + 1} - 1 \\
+     g\left( x \right) = \frac{x^2}{\sqrt{x^2 + 1} + 1} 
+    .\end{align*}
+for $x=4^{-k}$, $k=1,2,\ldots,20$. Please list a table for the function values and explain why.}
+
+The table is calculated with a python script, which is shown below the table.
+
+\begin{table}[H]
+    \begin{center}
+        \input{./prob4.tex} 
+    \end{center}
+\end{table}
+
+\inputpython{./prob4.py}
+
+Here we can see that at around $k = 13$ the values for $f$ and $g$ begin to differ significantly even though $f = g$ except at $x = 0$, where $g$ is not defined (although the limit of $g$ as $x$ tends to zero is 0).
+This is a conditioning problem. 
+It is observed that 
+\[
+f'\left( x \right) = \frac{x}{\sqrt{x^{2} + 1}}
+,\]
+and
+\[
+g'\left( x \right) = \frac{x \left(x^{2} + 2 \sqrt{x^{2} + 1} + 2\right)}{x^{2} \sqrt{x^{2} + 1} + 2 x^{2} + 2 \sqrt{x^{2} + 1} + 2}
+.\]
+
+It is clear that $f$ is well conditioned generally, but $g$ is not well conditioned as $x \rightarrow 0$ since the derivative does not exist at $x=0$.
 
 
 \end{document}
