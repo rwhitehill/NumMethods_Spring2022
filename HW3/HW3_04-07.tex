@@ -12,7 +12,7 @@
 \pagestyle{fancy}
 \lhead{Richard Whitehill}
 \chead{MATH 551 -- HW 3}
-\rhead{04/04/22}
+\rhead{04/07/22}
 \cfoot{\thepage~of~\pageref{LastPage}}
 
 \newcommand{\prob}[2]{\textbf{#1)} #2}
@@ -99,7 +99,7 @@ Notice that the degree of the polynomial is of degree 2 as in part (a).
 c) Based on your observation, is the interpolating polynomial always of degree $N$ for $N+1$ data points? 
 Explain why.
 
-Yes, the interpolating polynomial is always by construction of degree $n$ when we have $n+1$ data points.
+Yes, the interpolating polynomial is always (by construction) of degree $n$ when we have $n+1$ data points since we can solve for $n+1$ coefficients, meaning we can solve for $a_0,a_1,\ldots,a_n$.
 
 \prob{3}{For the data (-2,0), (0,4), and (1,9).}
 
@@ -154,7 +154,7 @@ b) Determine the Lagrange form of the interpolating polynomial.
 
 The Lagrange form is 
 \begin{align*}
-    p(x) &= 4\left[ \frac{\left( x+2 \right)\left( x-1 \right)}{-2} \right] + 9\left[ \frac{\left( x+2 \right)x}{3} \right]
+    p(x) &= 4\left[ \frac{\left( x+2 \right)\left( x-1 \right)}{-2} \right] + 9\left[ \frac{\left( x+2 \right)x}{3} \right] \\
     &= 3x\left( x+2 \right) -2\left( x+2 \right)\left( x-1 \right)
 .\end{align*}
 And simplifying for part (d) we find
@@ -194,7 +194,8 @@ The diagonal elements give the coefficients for Newton's interpolating polynomia
 d) Do you answer for (a), (b), and (c) agree? Expain why.
 
 As can be seen, all the different forms of polynomial interpolation given the same answer.
-This must be the case since there is a theorem which gurantees that a polynomial which interpolates a given set of data is the unique interpolating polynomial for the data set.
+This must be the case since there is a theorem which gurantees that a polynomial which interpolates a given set of data is unique.
+That is, if a polynomial interpolates the given data, then all other forms of polynomials which interpolate the data are in fact identical.
 
 \prob{4}{Write and execute a program to compute
     \begin{align*}
@@ -225,6 +226,8 @@ g'\left( x \right) = \frac{x \left(x^{2} + 2 \sqrt{x^{2} + 1} + 2\right)}{x^{2} 
 .\]
 
 It is clear that $f$ is well conditioned generally, but $g$ is not well conditioned as $x \rightarrow 0$ since the derivative does not exist at $x=0$.
+It is also possible that round-off error occurs here since $x^2 \approx 0$, likely too small to be differentiated.
+Thus, $f$ evaluates to $1 - 1 = 0$, while $g$ gives $x^2/2$.
 
 \prob{5}{For $f\left( x \right) = \frac{1}{1+x^2}$ on $[-1,1]$, write a code for polynomial interpolation, where the interpolating points are uniformly distributed on the interval. Plot the figures of $f(x)$ and $p_{n}(x)$, with $n = 1,2,\ldots,10$.}
 
