@@ -203,7 +203,7 @@ This must be the case since there is a theorem which gurantees that a polynomial
     .\end{align*}
 for $x=4^{-k}$, $k=1,2,\ldots,20$. Please list a table for the function values and explain why.}
 
-The table is calculated with a python script, which is shown below the table.
+The table is calculated (and formatted in LaTex!) with a python script, which is shown below the table.
 
 \begin{table}[H]
     \begin{center}
@@ -226,5 +226,21 @@ g'\left( x \right) = \frac{x \left(x^{2} + 2 \sqrt{x^{2} + 1} + 2\right)}{x^{2} 
 
 It is clear that $f$ is well conditioned generally, but $g$ is not well conditioned as $x \rightarrow 0$ since the derivative does not exist at $x=0$.
 
+\prob{5}{For $f\left( x \right) = \frac{1}{1+x^2}$ on $[-1,1]$, write a code for polynomial interpolation, where the interpolating points are uniformly distributed on the interval. Plot the figures of $f(x)$ and $p_{n}(x)$, with $n = 1,2,\ldots,10$.}
+
+For this problem we use Lagrange interpolation since it is the easiest to code and there is no advadvantage to using divided differences since there is no data in common between sets other than at the end points.
+The code is shown below:
+
+\inputpython{./prob5.py}
+
+The resulting plot is shown below:
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[scale=0.75]{./fig1.png}
+    \end{center} 
+\end{figure}
+
+Note that the darker marks on the plot highlight the location of $f(x)$.
+It can be seen that as more points are added, the interpolating polynomial becomes a better approximation of the function, oscillating about the function with nodes at the data points.
 
 \end{document}
