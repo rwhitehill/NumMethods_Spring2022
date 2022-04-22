@@ -75,14 +75,13 @@ if __name__ == '__main__':
 
         ax.plot(uniform_nodes[i],y1,'k.')
         ax.plot(chebyshev_nodes[i],y2,'r.')
-    ax.plot([],[],'k.',label='uniform')
     ax.plot([],[],'r.',label='chebyshev')
+    ax.plot([],[],'k.',label='uniform')
     for i in range(len(N)):
         ax.text(1.1,-1+i,r'$n=%d$'%N[i],fontsize=20)
     ax.set_xlim(right=1.5)
     ax.set_ylim(top=2.0)
     ax.set_xlabel(r'$x$',size=20)
-    ax.set_ylabel(r'$y$',size=20)
     ax.tick_params(axis='both',which='major',labelsize=20,direction='in')
     ax.legend(loc='upper center',fontsize=15)
     plt.savefig('fig3.png',bbox_inches='tight')

@@ -70,8 +70,8 @@ if __name__ == '__main__':
     f = interp1d(x_data,y_data,kind='cubic')
 
     a,b,c,d = spline_coeff(x_data,y_data,True)
-    #for i in range(len(a)):
-    #    print('%.5f  %.5f  %.5f  %.5f'%(a[i],b[i],c[i],d[i]))
+    for i in range(len(a)):
+        print('%.5f  %.5f  %.5f  %.5f'%(a[i],b[i],c[i],d[i]))
 
     fig,ax = plt.subplots(nrows=1,ncols=1,figsize=(7,5))
     ax.plot(T,reconstruct,'c')
