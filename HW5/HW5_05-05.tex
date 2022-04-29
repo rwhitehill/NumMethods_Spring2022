@@ -1,0 +1,67 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../preamble_files/packages}
+\input{../preamble_files/figures}
+\input{../preamble_files/references}
+\input{../preamble_files/shortcuts}
+\input{../preamble_files/listings}
+\usepackage{physics}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{makecell}
+
+\pagestyle{fancy}
+\lhead{Richard Whitehill}
+\chead{MATH 551 -- HW 5}
+\rhead{05/05/22}
+\cfoot{\thepage~of~\pageref{LastPage}}
+
+\newcommand{\prob}[2]{\textbf{#1)} #2}
+
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\prob{1}{
+Investigate the local truncation error for the difference formula
+\begin{align*}
+    f''(x) \approx \frac{f(x+3h) - 4f(x) + 3f(x-h)}{6h^2}
+.\end{align*}
+}
+
+\prob{2}{
+Consider a quadrature of the form
+\begin{align*}
+    \int_{-1}^{1} \left| x \right| f(x) \dd{x} = \frac{1}{4} \left[ f(-1) + 2f(0) + f(1) \right]
+.\end{align*}
+Show that it is exact for any polynomial $f(x)$ of degree at most 3.
+}
+
+\prob{3}{
+    For function $f(x) = \sin{x}$, use the forward-difference formula and backward-difference formula to determine $f'(a)$ at $a = 0.5,\,,0.6,\,0.7$ for $h = 0.1,\,0.05,\,0.025,\,0.0125,\,0.00625$.
+    Calculate the exact derivatives exactly by directly calculating the derivative function.
+    We define the order to be
+    \begin{align*}
+        {\rm order}(h) = \log_2{\frac{{\rm error}\left( 2h \right)}{{\rm error}\left( h \right)}}
+    .\end{align*}
+}
+
+\begin{table}[H]
+    \centering
+    \include{./prob3_0-5.tex}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \include{./prob3_0-6.tex}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \include{./prob3_0-7.tex}
+\end{table}
+
+
+
+\end{document}
