@@ -51,7 +51,7 @@ if __name__ == '__main__':
                 index=False,
                 escape=False,
                 column_format='lcccccc',
-                caption='Table for %.1f, where $f\'(%.1f) = %.5f$'%(A,A,fp(A)))      
+                caption='Table for $a = %.1f$, where $f\'(%.1f) = %.5f$'%(A,A,fp(A)))      
 
 
 
