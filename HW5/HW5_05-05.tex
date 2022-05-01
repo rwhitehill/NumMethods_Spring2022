@@ -30,6 +30,19 @@ Investigate the local truncation error for the difference formula
 .\end{align*}
 }
 
+We can find the local truncation error as $f''(x) - f''_{\rm approx}(x)$.
+For this, it is most straightfoward to perform the taylor exansions, form the linear combinations according to the approximation formula, and take the difference between the exact derivative and the approximation.
+The taylor expansions are shown below:
+\begin{align*}
+    f(x+3h) &= f(x) + 3hf'(x) + \frac{9}{2} h^2 f''(x) + \frac{9}{2}h^3f^{(3)}(\xi_1)\\
+    f(x) &= f(x) \\
+    f(x - h) &= f(x) - hf'(x) + \frac{1}{2}h^2f''(x) - \frac{1}{6}h^3f^{(3)}(\xi_2)
+.\end{align*}
+Then, we see that 
+\begin{align*}
+    \frac{f(x+3h) - 4f(x) + 3f(x-h)}{6h^2} = f''(x) + h\left[  \frac{3}{4}f^{(3)}(\xi_1) - \frac{1}{12}f^{(3)}(\xi_2) \right]
+.\end{align*}
+
 \prob{2}{
 Consider a quadrature of the form
 \begin{align*}
@@ -37,6 +50,26 @@ Consider a quadrature of the form
 .\end{align*}
 Show that it is exact for any polynomial $f(x)$ of degree at most 3.
 }
+
+We want to show that for any polynomial of at most degree 3 the quadrature formula is exact.
+Since the integral operation is linear, we must check the polynomial basis $1,x,x^2,x^3,\ldots$ as $f(x)$ and determine when the integral is no longer exact.
+Notice that
+\begin{align*}
+    \frac{1}{4}\left[ (-1)^{k} + 2(0)^{k} + (1)^{k} \right] = 
+    \begin{cases}
+        1 & f(x) = 1 \\
+        1/2 & k \equiv 0 \mod{2} \\
+        0 & k \equiv 1 \mod{1}
+    \end{cases}
+.\end{align*}
+It is clear that the integral is zero for all odd power of $x$ since $\left| x \right|x^{k}$ is an odd function being integrated over an even range.
+Thus, it remains to evaluate the integral for even powers of $x$.
+\begin{align*}
+    \int_{-1}^{1} \left| x \right|1 \dd{x} &= 1 \\
+    \int_{-1}^{1} \left| x \right|x^2 \dd{x} &= \frac{1}{2} \\
+    \int_{-1}^{1} \left| x \right|x^{4} \dd{x} &= \frac{1}{3}
+.\end{align*}
+Indeed, it is seen that the quadrature formula is no longer exact for $k = 4$, meaning that it is only guranteed to be exact for polynomials of at most degree 3.
 
 \prob{3}{
     For function $f(x) = \sin{x}$, use the forward-difference formula and backward-difference formula to determine $f'(a)$ at $a = 0.5,\,,0.6,\,0.7$ for $h = 0.1,\,0.05,\,0.025,\,0.0125,\,0.00625$.
