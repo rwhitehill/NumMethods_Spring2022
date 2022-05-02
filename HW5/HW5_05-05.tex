@@ -72,7 +72,7 @@ Thus, it remains to evaluate the integral for even powers of $x$.
 Indeed, it is seen that the quadrature formula is no longer exact for $k = 4$, meaning that it is only guranteed to be exact for polynomials of at most degree 3.
 
 \prob{3}{
-    For function $f(x) = \sin{x}$, use the forward-difference formula and backward-difference formula to determine $f'(a)$ at $a = 0.5,\,,0.6,\,0.7$ for $h = 0.1,\,0.05,\,0.025,\,0.0125,\,0.00625$.
+    For the function $f(x) = \sin{x}$, use the forward-difference formula and backward-difference formula to determine $f'(a)$ at $a = 0.5,\,,0.6,\,0.7$ for $h =$ 0.1, 0.05, 0.025, 0.0125, 0.00625.
     Calculate the exact derivatives exactly by directly calculating the derivative function.
     We define the order to be
     \begin{align*}
@@ -80,20 +80,22 @@ Indeed, it is seen that the quadrature formula is no longer exact for $k = 4$, m
     .\end{align*}
 }
 
-\begin{table}[H]
-    \centering
-    \include{./prob3_0-5.tex}
-\end{table}
+The calculation is done in python using the following formulae.
+The forward and backward difference equations are 
+\begin{align*}
+f'(x) &= \frac{f(x + h) - f(x)}{h} \\
+f'(x) &= \frac{f(x) - f(x - h)}{h}
+,\end{align*}
+respectively.
+The error is simply calculated as the absolute difference between the approximation for $f'(x)$ and the exact derivative $f'(x) = \cos{x}$.
 
-\begin{table}[H]
-    \centering
-    \include{./prob3_0-6.tex}
-\end{table}
+The code to produce the tables is shown below, and the tables are shown below the code.
 
-\begin{table}[H]
-    \centering
-    \include{./prob3_0-7.tex}
-\end{table}
+\inputpython{./prob3.py}
+
+\input{./prob3_0-5.tex}
+\input{./prob3_0-6.tex}
+\input{./prob3_0-7.tex}
 
 
 
