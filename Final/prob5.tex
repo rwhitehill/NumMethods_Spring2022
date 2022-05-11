@@ -1,0 +1,16 @@
+\begin{table}[H]
+\centering
+\caption{Results for trapezoidal and simpson rule integrations schemes for different subdivisions on the interval $[0,\pi/2]$.}
+\begin{tabular}{ccccccccc}
+\toprule
+$n$ & $T_n(f)$ & T error(n) & T ratio(n) & T order(n) & $S_n(f)$ & S error(n) & S ratio(n) & S order(n) \\
+\midrule
+  1 &  0.78540 &    0.21460 &          - &          - &        - &          - &          - &          - \\
+  2 &  0.94806 &    0.05194 &    4.13168 &    2.04673 &  1.00228 &    0.00228 &          - &          - \\
+  4 &  0.98712 &    0.01288 &    4.03134 &    2.01126 &  1.00013 &    0.00013 &   16.94006 &    4.08237 \\
+  8 &  0.99679 &    0.00321 &    4.00774 &    2.00279 &  1.00001 &    0.00001 &   16.22381 &    4.02004 \\
+ 16 &  0.99920 &    0.00080 &    4.00193 &    2.00070 &  1.00000 &    0.00000 &   16.05529 &    4.00498 \\
+ 32 &  0.99980 &    0.00020 &    4.00048 &    2.00017 &  1.00000 &    0.00000 &   16.01378 &    4.00124 \\
+\bottomrule
+\end{tabular}
+\end{table}
