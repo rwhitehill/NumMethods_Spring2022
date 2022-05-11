@@ -44,8 +44,9 @@ if __name__ == '__main__':
     a = 0.0;b=np.pi/2.0
     exact = 1.0 
 
-    results = {}
-    results[r'$n$'] = ['%d'%2**i for i in range(6)]
+    results = []
+
+    results.append(['%d'%2**i for i in range(6)])
 
     N = [1,2,4,8,16,32]
     trap = np.array([trap_int(f,a,b,_) for _ in N])
@@ -54,21 +55,25 @@ if __name__ == '__main__':
     trap_res = get_results(trap)
     simp_res = get_results(simp)
     
-    results[r'$T_n(f)$']   = ['%.5f'%_ for _ in trap]
-    results[r'T error(n)'] = ['%.5f'%_ for _ in trap_res[0]]
-    results[r'T ratio(n)'] = ['-'] + ['%.5f'%_ for _ in trap_res[1]]
-    results[r'T order(n)'] = ['-'] + ['%.5f'%_ for _ in trap_res[2]]
+    results.append(['%.5f'%_ for _ in trap])
+    results.append(['%.5f'%_ for _ in trap_res[0]])
+    results.append(['-'] + ['%.5f'%_ for _ in trap_res[1]])
+    results.append(['-'] + ['%.5f'%_ for _ in trap_res[2]])
+    
+    results.append(['-'] + ['%.5f'%_ for _ in simp])
+    results.append(['-'] + ['%.5f'%_ for _ in simp_res[0]])
+    results.append(['-','-'] + ['%.5f'%_ for _ in simp_res[1]])
+    results.append(['-','-'] + ['%.5f'%_ for _ in simp_res[2]])
 
-    results[r'$S_n(f)$'] = ['-'] + ['%.5f'%_ for _ in simp]
-    results[r'S error(n)'] = ['-'] + ['%.5f'%_ for _ in simp_res[0]]
-    results[r'S ratio(n)'] = ['-','-'] + ['%.5f'%_ for _ in simp_res[1]]
-    results[r'S order(n)'] = ['-','-'] + ['%.5f'%_ for _ in simp_res[2]]
+    results = np.array(results).T
 
-    table = pd.DataFrame(results) 
+    headers = [r'$n$',r'$T_n(f)$',r'${\rm error}(n)$',r'${\rm ratio}(n)$',r'${\rm order}(n)$',r'$S_n(f)$',r'${\rm error}(n)$',r'${\rm ratio}(n)$',r'${\rm order}(n)$']
+
+    table = pd.DataFrame(results,columns=headers) 
     table.to_latex(buf='prob5.tex',
             index=False,
             escape=False,
-            column_format=9*'c',
+            column_format=len(headers)*'c',
             caption=r'Results for trapezoidal and simpson rule integrations schemes for different subdivisions on the interval $[0,\pi/2]$.',
             position='H')
 

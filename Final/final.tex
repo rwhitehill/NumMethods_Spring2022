@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,letter]{article}
 
 \input{../preamble_files/packages}
 \input{../preamble_files/figures}
@@ -9,22 +9,27 @@
 
 \pagestyle{fancy}
 \lhead{Richard Whitehill}
-\chead{MATH 551 -- HW \#}
-\rhead{DATE}
+\chead{MATH 551 -- Final}
+\rhead{05/11/22}
 \cfoot{\thepage~of~\pageref{LastPage}}
 
 \newcommand{\prob}[2]{\textbf{#1)} #2}
 
 \setlength{\parskip}{\baselineskip}
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{\begin{tabularx}{\linewidth}{ l X X }0pt}
 
 \begin{document}
 
 \prob{5}{}
 
 \inputpython{./prob5.py}
-
 \input{./prob5.tex}
+
+\prob{6}{}
+
+\inputpython{./prob6.py}
+\hspace{1cm}
+\input{./prob6.tex}
 
 
 \end{document}

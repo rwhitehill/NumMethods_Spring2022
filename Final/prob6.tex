@@ -1,0 +1,16 @@
+\begin{table}[H]
+\centering
+\caption{Accuracy table at $t=1$ with different ODE approximation schemes, where the exact value is $y(1) = 1/11$.}
+\begin{tabular}{ccccccc}
+\toprule
+ $\phantom{h}$ & \multicolumn{2}{c}{Euler} & \multicolumn{2}{c}{Taylor} & \multicolumn{2}{c}{Runge Kutta} \\
+           $h$ & ${\rm error}(h)$ & ${\rm order}(h)$ & ${\rm error}(h)$ & ${\rm order}(h)$ & ${\rm error}(h)$ & ${\rm order}(h)$ \\
+\midrule
+        $1/20$ &          0.01080 &                - &          0.00372 &                - &          0.00235 &                - \\
+        $1/40$ &          0.00507 &          1.09058 &          0.00064 &          2.54041 &          0.00045 &          2.38303 \\
+        $1/80$ &          0.00348 &          0.54393 &          0.00089 &         -0.47378 &          0.00092 &         -1.03682 \\
+       $1/160$ &          0.00175 &          0.99365 &          0.00048 &          0.88107 &          0.00049 &          0.91419 \\
+       $1/320$ &          0.00062 &          1.49271 &          0.00001 &          5.98905 &          0.00001 &          6.43657 \\
+\bottomrule
+\end{tabular}
+\end{table}
